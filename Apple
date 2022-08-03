@@ -1,0 +1,26 @@
+import java.util.Scanner;
+public class Apple {
+    public static void main(String[] args) {
+        Scanner s = new Scanner(System.in);
+        while (s.hasNext()) {
+            int m = s.nextInt();
+            int n = s .nextInt();
+            System.out.println(f(m, n));
+        }
+        s.close();
+    }
+    //m是苹果数，n是盘子数
+    public static int f(int m, int n) {
+        //终止条件
+        if (m == 1 || m == 0 || n == 1) {
+            return 1;
+        }
+        if (m < n) {
+            return f(m, m);
+        } else {
+            // f(m-n,n)无空盘子，先每个盘子摆一个，m-n，再细分
+            //f(m,n-1)有空盘子，一次空一个盘子，再细分
+            return f(m - n, n) + f(m, n - 1);
+        }
+    }
+}
